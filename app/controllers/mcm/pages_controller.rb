@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mcm
-  class PagesController < ActionController::Base
+  class PagesController < Mcm.controller_parent.constantize
     layout Mcm.layout if Mcm.layout.present?
 
     def show
