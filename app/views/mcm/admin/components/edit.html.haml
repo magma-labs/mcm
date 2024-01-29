@@ -1,0 +1,19 @@
+- if @component.parent
+  = link_to t('custom_pages.actions.back'),
+    main_app.admin_custom_page_component_path(@page, @component.parent),
+    class: 'btn btn-primary'
+- else
+  = link_to t('custom_pages.actions.back'),
+    main_app.admin_custom_page_component_path(@page, @component),
+    class: 'btn btn-primary'
+
+%h4= @component.component.name.titleize
+= bootstrap_form_for @component, as: :components_page,
+    url: main_app.admin_custom_page_component_path(@page, @component), method: :put do |f|
+  = f.text_field :name, required: true
+  = f.check_box :active
+  = f.fields_for :metadata, @component.metadata do |metadata_form|
+    = render partial: "mcm/admin/components/templates/#{@component.backend_template}",
+        locals: { f: metadata_form, component_form: f }
+  %hr
+  = f.submit

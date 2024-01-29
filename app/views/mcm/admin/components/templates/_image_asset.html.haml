@@ -1,0 +1,4 @@
+= component_form.fields_for :assets_attributes, component_form.object.assets.first do |assets_form|
+  = assets_form.hidden_field :id
+  = assets_form.file_field :attachment
+  = image_tag assets_form.object.attachment.variant(:desktop).processed.url if assets_form.object

@@ -1,0 +1,24 @@
+:css
+  .#{class_name} {
+    background-image: url('#{image_path(asset.url)}');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: #{height}px;
+  }
+  @media only screen and (min-width: 480px) {
+    .#{class_name} {
+      background-image:url('#{image_path(asset.url)}');
+    }
+  }
+  @media only screen and (min-width: 740px) {
+    .#{class_name} {
+      background-image: url('#{image_path(asset.url)}');
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .#{class_name} {
+      background-image: url('#{image_path(asset.url)}');
+      background-size: 100%;
+    }
+  }
