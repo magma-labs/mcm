@@ -2,7 +2,7 @@
 
 module Mcm
   module Admin
-    class CustomPagesController < ActionController::Base
+    class CustomPagesController < BaseController
       before_action :find_page, only: [:show, :update, :destroy]
 
       def index

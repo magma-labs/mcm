@@ -2,6 +2,8 @@
 
 module Mcm
   class PagesController < ActionController::Base
+    layout Mcm.layout if Mcm.layout.present?
+
     def show
       @page = model_class.active.find_by!(path: request.path_info)
     end

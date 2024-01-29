@@ -7,4 +7,5 @@ require "mcm/custom_hash"
 require "mcm/json_serializer"
 
 module Mcm
+  mattr_accessor :layout, :admin_layout
 end

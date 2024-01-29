@@ -2,7 +2,7 @@
 
 module Mcm
   module Admin
-    class ComponentsController < ActionController::Base
+    class ComponentsController < BaseController
       before_action :find_page
       before_action :find_component
 
