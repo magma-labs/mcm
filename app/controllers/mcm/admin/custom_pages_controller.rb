@@ -3,7 +3,7 @@
 module Mcm
   module Admin
     class CustomPagesController < BaseController
-      before_action :find_page, only: [:show, :update, :destroy]
+      before_action :find_page, except: [:index, :new, :create]
 
       def index
         @custom_pages = model_class.all
@@ -11,17 +11,17 @@ module Mcm
 
       def create
         @page = model_class.create! custom_page_params
-        redirect_to location_after_save
+        redirect_to main_app.admin_custom_page_path(@page)
       end
 
       def update
         @page.update! custom_page_params
-        redirect_to location_after_save
+        redirect_to main_app.admin_custom_page_path(@page)
       end
 
       def destroy
         @page.destroy
-        redirect_to admin_custom_pages_path
+        redirect_to main_app.admin_custom_pages_path
       end
 
       private
@@ -35,11 +35,11 @@ module Mcm
       end
 
       def custom_page_params
-        params.require(:page).permit :name, :path, :metadata, :active
-      end
-
-      def location_after_save
-        request.headers['Referer'].presence || admin_custom_page_path(@page)
+        params.require(:page).permit :name, :path, :active, metadata: [
+          :background_color,
+          :meta_description,
+          :meta_keywords
+        ]
       end
     end
   end

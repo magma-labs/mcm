@@ -1,6 +1,5 @@
-- content_for :head do
-  %meta{ name: 'description', content: @page.metadata.meta_description }
-  %meta{ name: 'keywords', content: @page.metadata.meta_keywords }
+%meta{ name: 'description', content: @page.metadata.meta_description }
+%meta{ name: 'keywords', content: @page.metadata.meta_keywords }
 
 - @page.components_pages.active.top_level.each do |component|
   %section{ id: "section-#{component.id}" }
@@ -16,7 +15,7 @@
 
 - if @page.metadata.background_color.present?
   :css
-    .gradient-background {
-      background-color: #{@page.metadata.background_color}
-      background-image: none
+    body {
+      background-color: #{@page.metadata.background_color};
+      background-image: none;
     }
