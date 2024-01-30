@@ -3,10 +3,16 @@
 module Mcm
   module Admin
     class CustomPagesController < BaseController
+      include Mcm::PagesConcern
+
       before_action :find_page, except: [:index, :new, :create]
 
       def index
         @custom_pages = model_class.all
+      end
+
+      def preview
+        render 'mcm/pages/show'
       end
 
       def create

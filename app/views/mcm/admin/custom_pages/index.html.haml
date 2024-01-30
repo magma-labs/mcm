@@ -5,14 +5,17 @@
 %table.table.table-stripped
   %thead
     %th= t('custom_pages.components.name')
-    %th= t('custom_pages.path')
+    %th= t('custom_pages.routes')
     %th= t('custom_pages.is_it_live')
     %th= t('custom_pages.actions.title')
   %tboddy
     - @custom_pages.each do |page|
       %tr
         %td= link_to page.name, main_app.admin_custom_page_path(page)
-        %td= page.path
+        %td
+          %ul{style: 'list-style: none'}
+            - page.routes.each do |route|
+              %li= route.value
         %td
           = bootstrap_form_for page, as: :page, url: main_app.admin_custom_page_path(page),
               method: :put, class: "form" do |form|

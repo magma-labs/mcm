@@ -10,14 +10,32 @@
     class: 'btn btn-primary'
 
 = link_to t('custom_pages.preview'),
-  main_app.preview_page_path(path: @page.path), target: '_blank', rel: 'noopener',
+  main_app.preview_admin_custom_page_path(@page), target: '_blank', rel: 'noopener',
   class: 'btn btn-primary'
 
 = link_to t('custom_pages.actions.edit'),
   main_app.edit_admin_custom_page_path(@page),
   class: 'btn btn-primary'
 
-%h3= @page.path
+%h1= @page.name
+
+%hr
+%h4= t('custom_pages.routes')
+%table.table.table-bordered
+  %tr
+    %th= t('mcm.admin.locales.locale')
+    %th= t('mcm.admin.locales.route')
+    %th= t('custom_pages.actions.title')
+  - @page.routes.each do |route|
+    %tr
+      %td= route.locale
+      %td= route.value
+      %td
+        = link_to t('custom_pages.actions.edit'), main_app.edit_admin_locale_path(route)
+        |
+        = link_to t('custom_pages.actions.delete'), main_app.admin_locale_path(route), method: :delete, data: { confirm: t('custom_pages.messages.are_you_sure') }
+= link_to t('mcm.admin.locales.new_route'), main_app.new_admin_locale_path(mcm_locale: { key: :route, localizable_id: @page.id, localizable_type: @page.class }), class: 'btn btn-primary'
+
 
 %hr
 %h4= t('custom_pages.sections')

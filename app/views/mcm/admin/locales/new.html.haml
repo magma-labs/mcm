@@ -1,0 +1,9 @@
+= link_to t('custom_pages.actions.back'), localizable_path, class: 'btn btn-primary'
+
+%h2= @locale.route? ? t('mcm.admin.locales.new_route') : t('mcm.admin.locales.new_locale')
+%h5= "Owner: #{link_to @locale.localizable.name, localizable_path}"
+
+%hr
+
+= bootstrap_form_for @locale, url: main_app.admin_locales_path, as: :mcm_locale do |form|
+  = render partial: 'form', locals: { f: form }

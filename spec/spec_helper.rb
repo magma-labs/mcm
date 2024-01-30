@@ -11,6 +11,10 @@ require dummy_env
 require "#{__dir__}/dummy/config/environment"
 require "rspec/rails"
 
+# Configure mcm
+Mcm.controller_parent = "ActionController::Base"
+
+# Configure rspec
 RSpec.configure do |config|
   config.order = "random"
   config.use_transactional_fixtures = true

@@ -30,8 +30,20 @@ en:
               alignment: Alignment
               color: Color
               legend: Text
+      locales:
+        edit_locale: Edit Locale
+        edit_route: Edit Route
+        help:
+          locale: "A two-character code representing the target language (examples: en, es, pt, de, ...)"
+          route: "A path for the page starting with /"
+        locale: Locale
+        route: Route
+        new_locale: New Locale
+        new_route: New Route
+        value: Value
   custom_pages:
     actions:
+      save: Save
       back: Back
       customize: Customize
       delete: Destroy
@@ -74,9 +86,9 @@ en:
         name: Internal Name
         path: 'How url will look like, it is recommended to split words with dashes: /name-of-page'
       slug_error: Slug is in the wrong format, make sure to be single word split with dashes, no spaces, lowercase, and starts with /
-    path: Path
     preview: Preview
-    sections: Section
+    routes: Routes
+    sections: Sections
     status:
       draft: Draft
       live: Live

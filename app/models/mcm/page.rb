@@ -4,14 +4,17 @@ module Mcm
   class Page < Mcm::ApplicationRecord
     has_many :components_pages, class_name: 'Mcm::ComponentsPage', dependent: :destroy
     has_many :components, class_name: 'Mcm::Component', through: :components_pages
+    has_many :routes, ->{ routes }, class_name: 'Mcm::Locale', as: :localizable
 
     validates :name, presence: true
-    validates :path, presence: true, uniqueness: true,
-                     format: { with: %r{\A/[/[a-z0-9-]*]*\z},
-                               message: I18n.t('custom_pages.pages.slug_error') }
+
     scope :active, -> { where(active: true) }
 
     serialize :metadata, coder: Mcm::JsonSerializer
+
+    def self.find_by_route(route)
+      includes(:routes).active.where(routes: { value: route })
+    end
 
     def disabled?
       !active
