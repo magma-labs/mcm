@@ -26,9 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "haml-rails"
   spec.add_dependency "bootstrap_form", "~> 4.0"
   spec.add_dependency "image_processing"
-  # spec.add_dependency "bootstrap", "~> 4.0"
-  # spec.add_dependency "jquery-rails"
-  # spec.add_dependency "trix_rails"
 
   spec.add_development_dependency "rspec-rails"
 end
