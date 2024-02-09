@@ -25,6 +25,7 @@ class DummyAppGenerator < Rails::Generators::Base
       Rails::Generators::AppGenerator.start([name, "--skip_bootsnap"])
     end
     FileUtils.chdir destination_path do
+      run "rake active_storage:install:migrations"
       run "rake mcm:install:migrations"
       run "rake db:create db:migrate"
     end
