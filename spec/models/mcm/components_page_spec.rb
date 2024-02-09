@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Mcm::ComponentsPage, type: :model do
-  let!(:page) { Mcm::Page.create!(name: 'Testing page') }
+  let!(:page) { Mcm::Page.create!(name: 'Testing page', path: '/testing-path') }
 
   before :all do
     Rails.application.load_tasks
