@@ -1,10 +1,5 @@
-= link_to t('custom_pages.actions.edit'),
-  main_app.edit_admin_custom_page_component_path(@page, @component),
-  class: 'btn btn-primary'
-
-= link_to t('custom_pages.actions.back'),
-  main_app.admin_custom_page_path(@page),
-  class: 'btn btn-primary'
+= link_to t('custom_pages.actions.edit'), main_app.edit_admin_component_path(@component), class: 'btn btn-primary'
+= link_to t('custom_pages.actions.back'), main_app.admin_custom_page_path(@component.page), class: 'btn btn-primary'
 
 %hr
 %h1.mb-4= @component.name
@@ -28,14 +23,14 @@
         %td= t("custom_pages.components.active.#{component.active}")
         %td
           = link_to t('custom_pages.actions.customize'),
-              main_app.edit_admin_custom_page_component_path(@page, component)
+              main_app.edit_admin_component_path(component)
           |
           = link_to t('custom_pages.actions.delete'),
-              main_app.admin_custom_page_component_path(@page, component),
+              main_app.admin_component_path(component),
               method: :delete, data: { confirm: t('custom_pages.messages.are_you_sure') }
           |
           = link_to_if component.position > 1, t('custom_pages.actions.move_up'),
-              main_app.move_to_admin_custom_page_component_path(@page, component, position: component.position - 1),
+              main_app.move_to_admin_component_path(component, position: component.position - 1),
               method: :put
 = link_to t('custom_pages.components.add_new'),
-    main_app.new_admin_custom_page_component_component_path(@page, @component), class: 'btn btn-primary'
+    main_app.new_admin_component_path(parent_id: @component.id), class: 'btn btn-primary'

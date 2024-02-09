@@ -1,18 +1,21 @@
-- if @component
-  = link_to t('custom_pages.actions.back'), main_app.admin_custom_page_component_path(@page, @component), class: 'btn btn-primary'
+- if @parent
+  = link_to t('custom_pages.actions.back'), main_app.admin_component_path(@parent), class: 'btn btn-primary'
 - else
   = link_to t('custom_pages.actions.back'), main_app.admin_custom_page_path(@page), class: 'btn btn-primary'
 
-- if @component
-  %h4= @component.name
-  = bootstrap_form_for :components_page, url: main_app.admin_custom_page_component_components_path(@page, @component) do |f|
+%hr
+
+- if @parent
+  %h4= @parent.name
+  = bootstrap_form_for :components_page, url: main_app.admin_components_path(parent_id: @parent.id) do |f|
     = f.text_field :name, required: true
     = render partial: 'mcm/admin/components/component_options', locals: { components: Mcm::Component.content, f: f }
     %h5
     = f.submit
 - else
   %h2= t('custom_pages.new_section')
-  = bootstrap_form_for :components_page, url: main_app.admin_custom_page_components_path(@page) do |f|
+  = bootstrap_form_for :components_page, url: main_app.admin_components_path do |f|
+    %input{type: :hidden, name: :page_id, value: @page.id}
     = f.text_field :name, required: true
     = render partial: 'mcm/admin/components/component_options', locals: { components: Mcm::Component.containers, f: f }
     %hr

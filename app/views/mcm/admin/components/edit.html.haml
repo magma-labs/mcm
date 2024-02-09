@@ -1,11 +1,12 @@
 - if @component.parent
   = link_to t('custom_pages.actions.back'),
-    main_app.admin_custom_page_component_path(@page, @component.parent),
+    main_app.admin_component_path(@component.parent),
     class: 'btn btn-primary'
 - else
   = link_to t('custom_pages.actions.back'),
-    main_app.admin_custom_page_component_path(@page, @component),
+    main_app.admin_component_path(@component),
     class: 'btn btn-primary'
+%hr
 
 %h4= @component.component.name.titleize
 = bootstrap_form_for @component, as: :components_page,

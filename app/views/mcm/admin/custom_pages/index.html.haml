@@ -1,14 +1,14 @@
--# frozen_string_literal: true
-
 = link_to t('custom_pages.new'), main_app.new_admin_custom_page_path, class: 'btn btn-primary'
 
-%table.table.table-stripped
+%hr
+
+%table.table.table-bordered
   %thead
     %th= t('custom_pages.components.name')
     %th= t('custom_pages.routes')
     %th= t('custom_pages.is_it_live')
     %th= t('custom_pages.actions.title')
-  %tboddy
+  %tbody
     - @custom_pages.each do |page|
       %tr
         %td= link_to page.name, main_app.admin_custom_page_path(page)

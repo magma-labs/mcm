@@ -1,2 +1,5 @@
+= link_to t('custom_pages.actions.back'), main_app.admin_custom_pages_path, class: 'btn btn-primary'
+%hr
+
 = bootstrap_form_for :page, as: :page, method: :post, url: main_app.admin_custom_pages_path do |f|
   = render partial: 'form', locals: { f: f }
