@@ -20,12 +20,12 @@
   .col-12
     = f.text_field :cta_url, required: true, label: 'URL'
 
-  - [component_form.object.assets.first, component_form.object.assets.second].each.with_index do |asset, index|
-    = component_form.fields_for :assets, asset || component_form.object.assets.build do |assets_form|
-      .col-12
-        - attachment = assets_form.object.attachment
-        = image_tag attachment.variant(index.zero? ? :banner : :square).processed.url if attachment.attached?
-        = assets_form.hidden_field :position, value: index + 1
-        = assets_form.file_field :attachment,
-            label: t("custom_pages.components.banner.image_#{index + 1}"),
-            required: !Rails.env.test? && !assets_form.object.persisted?
+  - 2.times { component_form.object.assets.build } if component_form.object.assets.empty?
+  = component_form.fields_for :assets do |assets_form|
+    .col-12
+      - attachment = assets_form.object.attachment
+      = image_tag attachment.variant(index.zero? ? :banner : :square).processed.url if attachment.attached?
+      = assets_form.hidden_field :position, value: assets_form.index + 1
+      = assets_form.file_field :attachment,
+          label: t("custom_pages.components.banner.image_#{assets_form.index + 1}"),
+          required: !Rails.env.test? && !assets_form.object.persisted?
