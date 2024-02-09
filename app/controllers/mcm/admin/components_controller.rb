@@ -27,6 +27,12 @@ module Mcm
         @component = @component.draftable if @component.draft?
 
         @component.transaction do
+          if params[:discard_draft].present?
+            draft.destroy
+
+            return redirect_to location_after_save
+          end
+
           if params[:as_draft].present?
             unless draft.present?
               @component.create_draft_component

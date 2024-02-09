@@ -129,5 +129,23 @@ RSpec.describe Mcm::Admin::ComponentsController, type: :controller do
         include_examples "components controller"
       end
     end
+
+    context "when the discard_draft param is present" do
+      context "when the component has a draft version of itself" do
+        let!(:draft_component) { component_page.create_draft_component }
+
+        it "destroys the draft component" do
+          put :update,
+              params: {
+                id: component_page.id,
+                custom_page_id: page.id,
+                use_route: :mcm,
+                discard_draft: true
+              }
+
+          expect { draft_component.reload }.to raise_error ActiveRecord::RecordNotFound
+        end
+      end
+    end
   end
 end

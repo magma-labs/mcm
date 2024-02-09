@@ -46,6 +46,7 @@ en:
     actions:
       save: Save
       save_as_draft: Save as draft
+      discard_draft: Discard draft
       back: Back
       customize: Customize
       delete: Destroy

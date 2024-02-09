@@ -45,6 +45,7 @@ es:
   custom_pages:
     actions:
       save: Guardar
+      discard_draft: Descartar borrador
       save_as_draft: Guardar como borrador
       back: Regresar
       customize: Personalizar

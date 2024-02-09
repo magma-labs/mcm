@@ -23,4 +23,5 @@
         locals: { f: metadata_form, component_form: f }
   %hr
   = f.submit t('custom_pages.actions.save_as_draft'), name: 'as_draft', class: "btn btn-default"
+  = f.submit(t('custom_pages.actions.discard_draft'), name: 'discard_draft', class: "btn btn-danger") if @component.draft?
   = f.submit t('custom_pages.actions.save'), class: "btn btn-primary"
