@@ -40,6 +40,7 @@ en:
         route: Route
         new_locale: New Locale
         new_route: New Route
+        owner: Owner
         value: Value
   custom_pages:
     actions:

@@ -40,6 +40,7 @@ es:
         route: Ruta
         new_locale: Nueva traducción
         new_route: Nueva ruta
+        owner: Dueño
         value: Valor
   custom_pages:
     actions:
@@ -61,7 +62,7 @@ es:
       add_new_section: Nueva sección
       background_color: Color de fondo
       banner:
-        image_1: Imágen de fondo
+        image_1: Imagen de fondo
         image_2: Imagen para CTA
       component_type: Tipo de Componente
       empty: No hay información
@@ -76,7 +77,7 @@ es:
     is_it_live: Estado
     launch: Publicar
     messages:
-      are_you_sure: Confirmar la acción
+      are_you_sure: ¿Estás seguro?
       leave_empty: Dejar en blanco para no mostrar título
       something_went_wrong: Algo salió mal
     new: Nueva Página

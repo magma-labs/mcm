@@ -11,7 +11,8 @@
 = bootstrap_form_for @component, as: :components_page,
     url: main_app.admin_custom_page_component_path(@page, @component), method: :put do |f|
   = f.text_field :name, required: true
-  = f.check_box :active, custom: :switch
+  .form-group
+    = f.check_box :active, label: t('custom_pages.components.status'), custom: :switch
   = f.fields_for :metadata, @component.metadata do |metadata_form|
     = render partial: "mcm/admin/components/templates/#{@component.backend_template}",
         locals: { f: metadata_form, component_form: f }
