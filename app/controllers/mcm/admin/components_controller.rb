@@ -7,6 +7,8 @@ module Mcm
       before_action :find_parent, only: [:new, :create]
       before_action :find_component, except: [:new, :create]
 
+      delegate :draft, to: :@component
+
       def create
         @component = if @parent
           model_class.create! component_params.merge(parent: @parent, page_id: @parent.page_id)
@@ -17,8 +19,33 @@ module Mcm
         redirect_to main_app.edit_admin_component_path(@component)
       end
 
+      def edit
+        @component = draft if draft.present?
+      end
+
       def update
-        @component.update! component_params
+        @component = @component.draftable if @component.draft?
+
+        @component.transaction do
+          if params[:as_draft].present?
+            unless draft.present?
+              @component.create_draft_component
+              @component.switch_assets_with draft # This allows :assets_attributes to work
+            end
+
+            draft.update! component_params
+
+            return redirect_to location_after_save
+          end
+
+          if draft.present?
+            @component.assign_attributes draft.attributes_for_draftable
+            @component.switch_assets_with draft # This allows :assets_attributes to work
+            draft.destroy
+          end
+
+          @component.update! component_params
+        end
 
         redirect_to location_after_save
       end
@@ -70,6 +97,12 @@ module Mcm
           main_app.admin_custom_page_path(@component.page)
         end
       end
+
+      def override_component_assets_with_draft_ones_for_view
+        return unless draft.assets.empty?
+
+        @component.define_singleton_method :assets do
+          draft.assets
         end
       end
     end

@@ -45,6 +45,7 @@ en:
   custom_pages:
     actions:
       save: Save
+      save_as_draft: Save as draft
       back: Back
       customize: Customize
       delete: Destroy
@@ -80,6 +81,7 @@ en:
       are_you_sure: Are you sure?
       leave_empty: Leave empty for no title
       something_went_wrong: Something went wrong
+      draft: You're seeing the saved draft version of this component. Click on Save to publish it live!
     new: New Page
     new_section: New Section
     pages:

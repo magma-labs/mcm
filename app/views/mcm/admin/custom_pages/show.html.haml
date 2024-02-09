@@ -45,7 +45,7 @@
       %th= t('custom_pages.components.status')
       %th= t('custom_pages.actions.title')
   %tbody
-    - @page.components_pages.top_level.each do |component|
+    - @page.components_pages.non_draft.top_level.includes(:component, :children).each do |component|
       %tr
         %td{ colspan: 2 }= component.name
         %td= component.component_name.titleize

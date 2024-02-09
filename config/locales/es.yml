@@ -45,6 +45,7 @@ es:
   custom_pages:
     actions:
       save: Guardar
+      save_as_draft: Guardar como borrador
       back: Regresar
       customize: Personalizar
       delete: Borrar
@@ -80,6 +81,7 @@ es:
       are_you_sure: ¿Estás seguro?
       leave_empty: Dejar en blanco para no mostrar título
       something_went_wrong: Algo salió mal
+      draft: Estás viendo un borrador guardado de este componente. ¡Haz clic en Guardar para publicarlo!
     new: Nueva Página
     new_section: Nueva Sección
     pages:

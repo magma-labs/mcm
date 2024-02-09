@@ -9,8 +9,12 @@
 %hr
 
 %h4= @component.component.name.titleize
+
+- if @component.draft?
+  .alert.alert-warning= t('custom_pages.messages.draft')
+
 = bootstrap_form_for @component, as: :components_page,
-    url: main_app.admin_custom_page_component_path(@page, @component), method: :put do |f|
+    url: main_app.admin_component_path(@component), method: :put do |f|
   = f.text_field :name, required: true
   .form-group
     = f.check_box :active, label: t('custom_pages.components.status'), custom: :switch
@@ -18,4 +22,5 @@
     = render partial: "mcm/admin/components/templates/#{@component.backend_template}",
         locals: { f: metadata_form, component_form: f }
   %hr
-  = f.submit
+  = f.submit t('custom_pages.actions.save_as_draft'), name: 'as_draft', class: "btn btn-default"
+  = f.submit t('custom_pages.actions.save'), class: "btn btn-primary"
