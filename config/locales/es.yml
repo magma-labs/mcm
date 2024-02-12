@@ -30,8 +30,20 @@ es:
               alignment: Alineación
               color: Color
               legend: Texto
+      locales:
+        edit_locale: Editar traducción
+        edit_route: Editar ruta
+        help:
+          locale: "Código de dos caracteres del idioma de la traducción (ejemplos: en, es, pt, de, ...)"
+          route: "Una ruta para la página que empieza por /"
+        locale: Traducción
+        route: Ruta
+        new_locale: Nueva traducción
+        new_route: Nueva ruta
+        value: Valor
   custom_pages:
     actions:
+      save: Guardar
       back: Regresar
       customize: Personalizar
       delete: Borrar
@@ -76,7 +88,8 @@ es:
       slug_error: Slug especificado no cumple con el formato adecuado, debe ser sin espacios, minúsculas, palabras separadas con guiones e iniciar con /
     path: Path
     preview: Previsualizar
-    sections: Sección
+    routes: Rutas
+    sections: Secciones
     status:
       draft: Plantilla
       live: Publicada
