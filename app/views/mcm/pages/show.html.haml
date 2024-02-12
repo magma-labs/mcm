@@ -1,7 +1,7 @@
 %meta{ name: 'description', content: @page.metadata.meta_description }
 %meta{ name: 'keywords', content: @page.metadata.meta_keywords }
 
-- @page.components_pages.active.top_level.each do |component|
+- @page.components_pages.active.includes(:component, :children).top_level.each do |component|
   %section{ id: "section-#{component.id}" }
     - begin
       = render partial: "mcm/pages/templates/#{component.presenter.frontend_template}",
@@ -11,7 +11,7 @@
       .container
         %h4= t('custom_pages.messages.something_went_wrong')
         = link_to(t('custom_pages.actions.edit_component'),
-            main_app.edit_admin_custom_page_component_path(@page, component))
+            main_app.edit_admin_component_path(component))
 
 - if @page.metadata.background_color.present?
   :css

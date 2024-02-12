@@ -1,4 +1,5 @@
-= component_form.fields_for :assets, component_form.object.assets.first_or_initialize do |assets_form|
+- component_form.object.assets.first_or_initialize
+= component_form.fields_for :assets do |assets_form|
   .col-12
     = image_tag assets_form.object.attachment.variant(:desktop).processed.url if assets_form.object.persisted?
     = assets_form.file_field :attachment

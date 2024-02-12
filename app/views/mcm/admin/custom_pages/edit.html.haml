@@ -1,13 +1,7 @@
--# frozen_string_literal: true
-
-- content_for :page_actions do
-  %li= link_to t('custom_pages.actions.back'),
-      main_app.admin_custom_page_path(@page),
-      class: 'btn btn-primary'
+= link_to t('custom_pages.actions.back'), main_app.admin_custom_page_path(@page), class: 'btn btn-primary'
+%hr
 
 %h2= @page.name
-%h3= @page.path
-
 %hr
 
 = bootstrap_form_for @page, url: main_app.admin_custom_page_path(@page), as: :page do |form|

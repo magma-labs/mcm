@@ -1,4 +1,4 @@
-class RemovePathFromMcmPages < ActiveRecord::Migration[7.1]
+class RemovePathFromMcmPages < ActiveRecord::Migration[5.2]
   def change
     remove_column :mcm_pages, :path
   end

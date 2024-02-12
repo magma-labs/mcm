@@ -1,5 +1,3 @@
--# frozen_string_literal: true
-
 - if @page.active
   = link_to t('custom_pages.take_it_down'),
     main_app.admin_custom_page_path(@page, page: { active: false }), method: :put,
@@ -16,11 +14,12 @@
 = link_to t('custom_pages.actions.edit'),
   main_app.edit_admin_custom_page_path(@page),
   class: 'btn btn-primary'
+%hr
 
 %h1= @page.name
-
 %hr
-%h4= t('custom_pages.routes')
+
+%h5= t('custom_pages.routes')
 %table.table.table-bordered
   %tr
     %th= t('mcm.admin.locales.locale')
@@ -35,10 +34,9 @@
         |
         = link_to t('custom_pages.actions.delete'), main_app.admin_locale_path(route), method: :delete, data: { confirm: t('custom_pages.messages.are_you_sure') }
 = link_to t('mcm.admin.locales.new_route'), main_app.new_admin_locale_path(mcm_locale: { key: :route, localizable_id: @page.id, localizable_type: @page.class }), class: 'btn btn-primary'
-
-
 %hr
-%h4= t('custom_pages.sections')
+
+%h5= t('custom_pages.sections')
 %table.table.table-bordered
   %thead
     %tr
@@ -47,25 +45,24 @@
       %th= t('custom_pages.components.status')
       %th= t('custom_pages.actions.title')
   %tbody
-    - @page.components_pages.top_level.each do |component|
+    - @page.components_pages.non_draft.top_level.includes(:component, :children).each do |component|
       %tr
         %td{ colspan: 2 }= component.name
         %td= component.component_name.titleize
         %td= t("custom_pages.components.active.#{component.active}")
         %td
           = link_to t('custom_pages.actions.customize'),
-              main_app.admin_custom_page_component_path(@page, component)
+              main_app.admin_component_path(component)
           |
           = link_to t('custom_pages.actions.edit'),
-                main_app.edit_admin_custom_page_component_path(@page, component)
+                main_app.edit_admin_component_path(component)
           |
           = link_to t('custom_pages.actions.delete'),
-                main_app.admin_custom_page_component_path(@page, component), method: :delete,
+                main_app.admin_component_path(component), method: :delete,
                 data: { confirm: t('custom_pages.messages.are_you_sure') }
           |
           = link_to_if component.position.to_i > 1, t('custom_pages.actions.move_up'),
-                main_app.move_to_admin_custom_page_component_path(@page, component,
-                    position: component.position - 1),
+                main_app.move_to_admin_component_path(component, position: component.position - 1),
                 method: :put
       - if component.children.size.positive?
         - component.children.each do |component_child|
@@ -76,7 +73,6 @@
             %td= t("custom_pages.components.active.#{component_child.active}")
             %td
               = link_to t('custom_pages.actions.customize'),
-                  main_app.edit_admin_custom_page_component_component_path(@page,
-                      component, component_child)
+                  main_app.edit_admin_component_path(component_child)
 
-= link_to t('custom_pages.components.add_new_section'), main_app.new_admin_custom_page_component_path(@page), class: 'btn btn-primary'
+= link_to t('custom_pages.components.add_new_section'), main_app.new_admin_component_path(page_id: @page.id), class: 'btn btn-primary'

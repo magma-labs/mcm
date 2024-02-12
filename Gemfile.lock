@@ -94,6 +94,9 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
+    debug (1.9.1)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     diff-lcs (1.5.0)
     drb (2.2.0)
       ruby2_keywords
@@ -221,6 +224,7 @@ GEM
     ruby-vips (2.2.0)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
+    silent_stream (1.0.6)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -256,9 +260,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  debug (>= 1.0.0)
   mcm!
   puma
   rspec-rails
+  silent_stream
   sprockets-rails
   sqlite3
 

@@ -6,11 +6,16 @@ Rails.application.routes.draw do
 
     namespace 'admin' do
       resources :locales
+
       resources :custom_pages do
         member { get :preview }
-        resources :components do
-          resources :components
-          member { put :move_to }
+      end
+
+      resources :components do
+        resources :components
+
+        member do
+          put :move_to
         end
       end
     end

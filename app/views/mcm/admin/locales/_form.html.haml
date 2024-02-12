@@ -1,5 +1,5 @@
-= f.text_field :locale, required: true, help: t('mcm.admin.locales.help.locale')
-= f.text_field :value, required: true, help: f.object.route? && t('mcm.admin.locales.help.route')
+= f.text_field :locale, label: t('mcm.admin.locales.locale'), required: true, help: t('mcm.admin.locales.help.locale')
+= f.text_field :value, label: t('mcm.admin.locales.value'), required: true, help: f.object.route? && t('mcm.admin.locales.help.route')
 = f.hidden_field :key
 = f.hidden_field :localizable_id
 = f.hidden_field :localizable_type

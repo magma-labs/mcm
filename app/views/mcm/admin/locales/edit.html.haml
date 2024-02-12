@@ -1,7 +1,9 @@
 = link_to t('custom_pages.actions.back'), localizable_path, class: 'btn btn-primary'
 
+%hr
+
 %h2= @locale.route? ? t('mcm.admin.locales.edit_route') : t('mcm.admin.locales.edit_locale')
-%h5= "Owner: #{link_to @locale.localizable.name, localizable_path}"
+%h5= "#{t('mcm.admin.locales.owner')}: #{link_to @locale.localizable.name, localizable_path}"
 
 %hr
 

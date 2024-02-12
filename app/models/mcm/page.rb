@@ -2,7 +2,7 @@
 
 module Mcm
   class Page < Mcm::ApplicationRecord
-    has_many :components_pages, class_name: 'Mcm::ComponentsPage', dependent: :destroy
+    has_many :components_pages, -> { non_draft }, class_name: 'Mcm::ComponentsPage', dependent: :destroy
     has_many :components, class_name: 'Mcm::Component', through: :components_pages
     has_many :routes, ->{ routes }, class_name: 'Mcm::Locale', as: :localizable
 
