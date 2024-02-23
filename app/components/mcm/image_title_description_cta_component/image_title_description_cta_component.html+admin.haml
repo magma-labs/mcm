@@ -5,11 +5,11 @@
 
 - @component_form.fields_for :metadata, @component.metadata do |metadata_form|
   = metadata_form.text_field :title, required: true, help: 'Always centered'
-  = metadata_form.select :title_color, available_button_colors, required: true
+  = metadata_form.select :title_color, available_text_colors, required: true
   = metadata_form.text_area :content, required: true
   .row
     .col-6
-      = metadata_form.select :content_color, available_button_colors, required: true
+      = metadata_form.select :content_color, available_text_colors, required: true
     .col-6
       = metadata_form.select :content_alignment, text_alignments, required: true
   .row

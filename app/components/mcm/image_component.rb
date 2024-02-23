@@ -1,9 +1,10 @@
 module Mcm
   class ImageComponent < BaseComponent
-    def initialize(form:, styles:, variant: :desktop)
+    def initialize(form:, styles:, variant: :desktop, label: nil)
       @form = form
       @styles = styles
       @variant = variant
+      @label = label
     end
 
     protected
