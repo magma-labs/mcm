@@ -1,7 +1,5 @@
 module Mcm::Admin
-  class BaseComponent < ::ViewComponent::Base
-    attr_reader :component, :form, :component_form
-
+  class FormComponent < ::ViewComponent::Base
     def initialize(component:, component_form:)
       @component = component
       @component_form = component_form

@@ -1,5 +1,5 @@
 module Mcm::Admin
-  class ImageComponent < BaseComponent
+  class ImageComponent < FormComponent
     def initialize(form:, styles:)
       @form = form
       @styles = styles
