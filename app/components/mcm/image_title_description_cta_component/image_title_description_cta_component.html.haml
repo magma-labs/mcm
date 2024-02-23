@@ -3,9 +3,9 @@
     .card-img-top.d-flex.justify-content-center
       = image_tag @component.assets.first.attachment.variant(:square).processed.url, class: 'img-fluid'
   .card-body
-    %h4.text-center{ class: @component.presenter.title_classes }
+    %h4.text-center{ class: title_classes }
       = @component.metadata.title
-    %p.text-center{ class: @component.presenter.content_classes }
+    %p.text-center{ class: content_classes }
       = @component.metadata.content
     - if @component.metadata.cta.present?
       %div.text-center{ class: @component.metadata.button_alignment }

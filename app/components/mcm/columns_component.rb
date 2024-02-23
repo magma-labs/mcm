@@ -1,9 +1,9 @@
 module Mcm
   class ColumnsComponent < BaseComponent
     def self.component_type
-      'container'
+      "container"
     end
-    
+
     def full_width?
       @component.metadata.full_width.eql?('1')
     end
@@ -13,7 +13,7 @@ module Mcm
     end
 
     def title_classes
-      metadata.values(:section_title_color, :section_title_alignment).join(' ')
+      @component.metadata.values(:section_title_color, :section_title_alignment).join(' ')
     end
   end
 end

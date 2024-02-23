@@ -19,7 +19,7 @@ module Mcm
 
     validates :name, presence: true
     delegate :name, to: :component, prefix: true
-    delegate :backend_template, :frontend_template, :full_width?, :multiple_images?, to: :presenter
+    delegate :full_width?, to: :view_component
 
     serialize :metadata, coder: Mcm::JsonSerializer
 
@@ -31,10 +31,6 @@ module Mcm
     before_create :fill_defaults
     before_create :calculate_position
     before_destroy :update_related_positions
-
-    def presenter
-      @presenter ||= "::Mcm::#{component_name.camelize}Presenter".constantize.new(self)
-    end
 
     def view_component(component_form: nil)
       "::Mcm::#{component_name.camelize}Component".constantize.new(
@@ -121,7 +117,7 @@ module Mcm
     private
 
     def fill_defaults
-      self.metadata ||= presenter.defaults
+      self.metadata ||= view_component.defaults
     end
 
     def calculate_position

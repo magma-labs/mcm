@@ -1,6 +1,6 @@
 .py-5{ class: @component.full_width? ? 'container-fluid' : 'container' }
   - if @component.metadata.section_title.present?
-    %h2{ class: @component.presenter.title_classes }
+    %h2{ class: title_classes }
       = @component.section_title
   .row.align-content-center.d-flex{ id: "row-#{@component.id}" }
     - @component.children.active.each do |component|
@@ -22,5 +22,5 @@
 
 :css
   #row-#{@component.id} {
-    height: #{@component.presenter.height};
+    height: #{height};
   }

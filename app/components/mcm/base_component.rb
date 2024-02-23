@@ -1,11 +1,17 @@
 module Mcm
   class BaseComponent < ::ViewComponent::Base
+    def self.component_type
+      "content"
+    end
+
     def initialize(component:, component_form: nil)
       @component = component
       @component_form = component_form
     end
 
-    protected
+    def defaults
+      {}
+    end
 
     def image_preview_styles
       # Matches the :small attachment variant in Asset
