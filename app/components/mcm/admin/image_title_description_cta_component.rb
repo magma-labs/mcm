@@ -1,11 +1,7 @@
-# frozen_string_literal: true
-
 module Mcm::Admin
   class ImageTitleDescriptionCtaComponent < BaseComponent
-    def image_width
-      {
-          square: '680x680>'
-      }
+    def image_styles
+      "max-width:680px;max-height:680px"
     end
   end
 end

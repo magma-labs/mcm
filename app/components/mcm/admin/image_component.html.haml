@@ -1,0 +1,17 @@
+= @form.hidden_field :id
+= image_tag @form.object.attachment.variant(:square).processed.url, id: "preview-#{@form.options[:child_index]}", style: @styles if @form.object.persisted?
+= @form.file_field :attachment, onchange: "showPreview(this, #{@form.options[:child_index]})"
+
+:javascript
+  if (typeof showPreview == 'undefined') {
+    function showPreview(input, index) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          const img = document.getElementById("preview-" + index)
+          img.src = e.target.result
+        }
+        reader.readAsDataURL(input.files[0])
+      }
+    }
+  }

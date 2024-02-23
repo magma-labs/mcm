@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Mcm::Admin
   class BaseComponent < ::ViewComponent::Base
     attr_reader :component, :form, :component_form
