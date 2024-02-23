@@ -1,18 +1,20 @@
 module Mcm
   class ImageComponent < BaseComponent
-    def initialize(form:, styles:, variant: :desktop, label: nil)
-      @form = form
-      @styles = styles
-      @variant = variant
-      @label = label
+    def initialize(opts = {})
+      %w[form styles label class_name height].each do |attribute|
+        instance_variable_set "@#{attribute}", opts[attribute.to_sym]
+      end
+
+      @asset = opts[:asset] || @form&.object
+      @variant = opts[:variant] || :desktop
     end
 
     protected
 
     def image_src
-      return unless @form.object.persisted?
+      return unless @asset.persisted?
 
-      @form.object.attachment.variant(@variant).processed.url
+      @asset.attachment.variant(@variant).processed.url
     end
   end
 end

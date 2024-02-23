@@ -1,26 +1,2 @@
 .p-0.w-100{ class: "image_hero_#{@component.assets.first.id}" }
-
-:css
-  .#{class_name} {
-    background-image: url('#{image_path(asset.url)}');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: #{height}px;
-  }
-  @media only screen and (min-width: 480px) {
-    .#{class_name} {
-      background-image:url('#{image_path(asset.url)}');
-    }
-  }
-  @media only screen and (min-width: 740px) {
-    .#{class_name} {
-      background-image: url('#{image_path(asset.url)}');
-    }
-  }
-  @media only screen and (min-width: 1200px) {
-    .#{class_name} {
-      background-image: url('#{image_path(asset.url)}');
-      background-size: 100%;
-    }
-  }
+= render Mcm::ImageComponent.new(asset: @component.assets.first, class_name: "image_hero_#{@component.assets.first.id}", height: @component.parent.height)

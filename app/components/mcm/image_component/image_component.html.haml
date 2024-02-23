@@ -1,1 +1,24 @@
--# This empty file is needed so ViewComponent doesn't raise an "undefined method #call" for ImageComponent
+:css
+  .#{@class_name} {
+    background-image: url('#{image_src}');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: #{@height}px;
+  }
+  @media only screen and (min-width: 480px) {
+    .#{@class_name} {
+      background-image:url('#{image_src}');
+    }
+  }
+  @media only screen and (min-width: 740px) {
+    .#{@class_name} {
+      background-image: url('#{image_src}');
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .#{@class_name} {
+      background-image: url('#{image_src}');
+      background-size: 100%;
+    }
+  }
