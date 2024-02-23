@@ -1,0 +1,7 @@
+- @component_form.fields_for :metadata, @component.metadata do |metadata_form|
+  = metadata_form.select :vertical_alignment, vertical_alignment_options, required: true
+  = metadata_form.select :horizontal_alignment, horizontal_alignment_options, required: true
+
+- @component.assets.first_or_initialize
+- @component_form.fields_for :assets do |assets_form|
+  = render Mcm::ImageComponent.new(form: assets_form, styles: image_styles)
