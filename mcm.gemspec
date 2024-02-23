@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 6.0.0"
+  spec.add_dependency "view_component"
   spec.add_dependency "haml-rails"
   spec.add_dependency "bootstrap_form", "~> 4.0"
   spec.add_dependency "image_processing"

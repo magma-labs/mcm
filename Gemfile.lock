@@ -6,6 +6,7 @@ PATH
       haml-rails
       image_processing
       rails (>= 6.0.0)
+      view_component
 
 GEM
   remote: https://rubygems.org/
@@ -131,6 +132,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
+    method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
@@ -159,8 +161,6 @@ GEM
       racc (~> 1.4)
     psych (5.1.2)
       stringio
-    puma (6.4.2)
-      nio4r (~> 2.0)
     racc (1.7.3)
     rack (3.0.8)
     rack-session (2.0.0)
@@ -225,19 +225,6 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     silent_stream (1.0.6)
-    sprockets (4.2.1)
-      concurrent-ruby (~> 1.0)
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      sprockets (>= 3.0.0)
-    sqlite3 (1.7.0-aarch64-linux)
-    sqlite3 (1.7.0-arm-linux)
-    sqlite3 (1.7.0-arm64-darwin)
-    sqlite3 (1.7.0-x86-linux)
-    sqlite3 (1.7.0-x86_64-darwin)
-    sqlite3 (1.7.0-x86_64-linux)
     stringio (3.1.0)
     temple (0.10.3)
     thor (1.3.0)
@@ -245,6 +232,10 @@ GEM
     timeout (0.4.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    view_component (3.11.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     webrick (1.8.1)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -262,11 +253,8 @@ PLATFORMS
 DEPENDENCIES
   debug (>= 1.0.0)
   mcm!
-  puma
   rspec-rails
   silent_stream
-  sprockets-rails
-  sqlite3
 
 BUNDLED WITH
    2.5.4
