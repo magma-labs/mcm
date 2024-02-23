@@ -36,14 +36,17 @@ module Mcm
       @presenter ||= "::Mcm::#{component_name.camelize}Presenter".constantize.new(self)
     end
 
-    def view_component(admin: false, component_form:)
-      klass = if admin
-        "::Mcm::Admin::#{component_name.camelize}Component".constantize
-      else
-        "::Mcm::#{component_name.camelize}Component".constantize
-      end
+    def view_component_for_admin(component_form:)
+      "::Mcm::Admin::#{component_name.camelize}Component".constantize.new(
+        component: self,
+        component_form: component_form
+      )
+    end
 
-      klass.new(component: self, component_form: component_form)
+    def view_component_for_frontend
+      "::Mcm::#{component_name.camelize}Component".constantize.new(
+        component: self
+      )
     end
 
     def respond_to_missing?(method, *args)
