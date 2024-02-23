@@ -37,12 +37,21 @@ module Mcm
       }
     end
 
-    def available_button_colors
+    def available_text_colors
       {
         I18n.t('custom_pages.color.white') => "text-white",
         I18n.t('custom_pages.color.dark') => "text-dark",
         I18n.t('custom_pages.color.primary') => "text-primary",
         I18n.t('custom_pages.color.secondary') => "text-secondary"
+      }
+    end
+
+    def available_button_colors
+      {
+        I18n.t('custom_pages.color.white') => "btn-white",
+        I18n.t('custom_pages.color.dark') => "btn-dark",
+        I18n.t('custom_pages.color.primary') => "btn-primary",
+        I18n.t('custom_pages.color.secondary') => "btn-secondary"
       }
     end
   end
