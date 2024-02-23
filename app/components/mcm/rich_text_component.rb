@@ -1,5 +1,5 @@
 module Mcm
-  class RichTextComponent < FrontendComponent
+  class RichTextComponent < BaseComponent
     def content_classes
       [
         'my-3',

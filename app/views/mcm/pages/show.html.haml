@@ -4,7 +4,7 @@
 - @page.components_pages.active.includes(:component, :children).top_level.each do |component|
   %section{ id: "section-#{component.id}" }
     - begin
-      = render component.view_component_for_frontend
+      = render component.view_component
     - rescue ActionView::Template::Error => e
       - Rails.logger.error(e)
       .container

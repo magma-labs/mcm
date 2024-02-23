@@ -1,6 +1,6 @@
-module Mcm::Admin
-  class FormComponent < ::ViewComponent::Base
-    def initialize(component:, component_form:)
+module Mcm
+  class BaseComponent < ::ViewComponent::Base
+    def initialize(component:, component_form: nil)
       @component = component
       @component_form = component_form
     end

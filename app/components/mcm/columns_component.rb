@@ -1,9 +1,9 @@
 module Mcm
-  class ColumnsComponent < FrontendComponent
+  class ColumnsComponent < BaseComponent
     def self.component_type
       'container'
     end
-
+    
     def full_width?
       @component.metadata.full_width.eql?('1')
     end

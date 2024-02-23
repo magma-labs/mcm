@@ -6,7 +6,7 @@
     - @component.children.active.each do |component|
       .col-12.col-md.align-items-center.d-flex.flex-wrap
         - begin
-          = render component.view_component_for_frontend
+          = render component.view_component
         - rescue ActionView::Template::Error => e
           - Rails.logger.error(e)
           .container
@@ -19,6 +19,7 @@
     #section-#{@component.id} {
       background-color: #{@component.metadata.background_color};
     }
+
 :css
   #row-#{@component.id} {
     height: #{@component.presenter.height};

@@ -5,6 +5,7 @@ module Mcm
     class CustomPagesController < BaseController
       include Mcm::PagesConcern
 
+      skip_before_action :set_admin_variant, only: :preview
       before_action :find_page, except: [:index, :new, :create]
 
       def index
