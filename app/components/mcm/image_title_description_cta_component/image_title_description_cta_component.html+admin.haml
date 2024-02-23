@@ -1,7 +1,7 @@
 %h5 Image
 - @component.assets.first_or_initialize
 - @component_form.fields_for :assets do |assets_form|
-  = render Mcm::ImageComponent.new(form: assets_form, styles: image_styles)
+  = render Mcm::ImageComponent.new(form: assets_form, styles: image_preview_styles, variant: :small)
 
 - @component_form.fields_for :metadata, @component.metadata do |metadata_form|
   = metadata_form.text_field :title, required: true, help: 'Always centered'

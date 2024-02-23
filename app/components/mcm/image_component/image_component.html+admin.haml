@@ -1,5 +1,5 @@
 = @form.hidden_field :id
-= image_tag @form.object.attachment.variant(:square).processed.url, id: "preview-#{@form.options[:child_index]}", style: @styles if @form.object.persisted?
+%img{src: image_src, id: "preview-#{@form.options[:child_index]}", style: @styles}
 = @form.file_field :attachment, onchange: "showPreview(this, #{@form.options[:child_index]})"
 
 :javascript

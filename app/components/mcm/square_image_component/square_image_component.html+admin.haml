@@ -4,4 +4,4 @@
 
 - @component.assets.first_or_initialize
 - @component_form.fields_for :assets do |assets_form|
-  = render Mcm::ImageComponent.new(form: assets_form, styles: image_styles)
+  = render Mcm::ImageComponent.new(form: assets_form, styles: image_preview_styles, variant: :small)

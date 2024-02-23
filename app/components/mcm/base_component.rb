@@ -7,6 +7,11 @@ module Mcm
 
     protected
 
+    def image_preview_styles
+      # Matches the :small attachment variant in Asset
+      "max-width:400px;max-height:400px;"
+    end
+
     def text_alignments
       {
         I18n.t('custom_pages.alignment.left') => "text-left",
