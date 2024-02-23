@@ -6,7 +6,7 @@ module Mcm
       attachable.variant :tablet, resize_to_limit: [740, 435]
       attachable.variant :desktop, resize_to_limit: [1200, 430]
       attachable.variant :small, resize_to_limit: [400, 400]
-      attachable.variant :large, resize_to_limit: [680, 680]
+      attachable.variant :large, resize_to_limit: [1920, 720]
       attachable.variant :banner, resize_to_limit: [1920, 720]
       attachable.variant :square, resize_to_limit: [420, 630]
     end
