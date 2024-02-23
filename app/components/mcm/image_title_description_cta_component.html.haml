@@ -1,0 +1,13 @@
+.card.border-0.h-100.bg-transparent.flex-grow-1
+  - if @component.assets.present?
+    .card-img-top.d-flex.justify-content-center
+      = image_tag @component.assets.first.attachment.variant(:square).processed.url, class: 'img-fluid'
+  .card-body
+    %h4.text-center{ class: @component.presenter.title_classes }
+      = @component.metadata.title
+    %p.text-center{ class: @component.presenter.content_classes }
+      = @component.metadata.content
+    - if @component.metadata.cta.present?
+      %div.text-center{ class: @component.metadata.button_alignment }
+        = link_to @component.cta, @component.cta_url, class: "btn btn-primary"
+  .card-footer.bg-transparent.border-0
