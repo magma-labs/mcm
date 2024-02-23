@@ -1,0 +1,35 @@
+- @component.assets.first_or_initialize
+- @component_form.fields_for :assets do |assets_form|
+  = render Mcm::ImageComponent.new(form: assets_form, styles: image_preview_styles)
+
+- @component_form.fields_for :metadata, @component.metadata do |metadata_form|
+  .row
+    .col-6
+      = metadata_form.text_field :title, required: true
+    .col-6
+      = metadata_form.select :title_color, available_text_colors, required: true
+
+  = metadata_form.label :content
+  = metadata_form.hidden_field :content, required: true
+  %trix-editor{ input: 'components_page_metadata_content' }
+
+  .row.mt-3
+    .col-6
+      = metadata_form.select :content_alignment, text_alignments, required: true
+    .col-6
+      = metadata_form.select :content_vertical_alignment, vertical_alignment_options, required: true
+  .row
+    .col-6
+      = metadata_form.select :content_color, available_text_colors, required: true
+    .col-6
+      = metadata_form.select :content_horizontal_alignment, horizontal_alignment_options, required: true
+  .row
+    .col-6
+      = metadata_form.text_field :cta
+    .col-6
+      = metadata_form.text_field :cta_url
+  .row
+    .col-6
+      = metadata_form.select :button_color, available_button_colors
+    .col-6
+      = metadata_form.select :button_alignment, text_alignments, required: true

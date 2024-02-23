@@ -1,0 +1,15 @@
+- @component.assets.each do |asset|
+  .p-0.w-100{ class: "image_hero_#{asset.id}" }
+  = render partial: 'mcm/pages/templates/shared/hero_image_css',
+      locals: { asset: asset,
+          class_name: "image_hero_#{asset.id}",
+          height: @component.parent.height }
+  .carousel-caption.d-flex.h-100{ class: content_alignment_classes }
+    %div
+      %h2{ class: title_classes }= @component.title
+      %div{ class: content_classes }
+        != @component.content
+      - if @component.metadata.cta.present?
+        %div{ class: @component.metadata.button_alignment }
+          = link_to @component.cta, @component.cta_url,
+              class: "btn #{@component.metadata.button_color}"
