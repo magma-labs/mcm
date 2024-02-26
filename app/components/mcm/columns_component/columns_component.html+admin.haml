@@ -1,14 +1,15 @@
-- @component_form.fields_for :metadata, @component.metadata do |metadata_form|
-  = metadata_form.text_field :section_title, help: t('custom_pages.messages.leave_empty')
-  .row
-    .col-6
-      = metadata_form.select :section_title_alignment, text_alignments, required: true
-    .col-6
-      = metadata_form.select :section_title_color, available_text_colors, required: true
+- render "mcm/component_form", component: @component do |component_form|
+  - component_form.fields_for :metadata, @component.metadata do |metadata_form|
+    = metadata_form.text_field :section_title, help: t('custom_pages.messages.leave_empty')
+    .row
+      .col-6
+        = metadata_form.select :section_title_alignment, text_alignments, required: true
+      .col-6
+        = metadata_form.select :section_title_color, available_text_colors, required: true
 
-  .row
-    .col-6
-      = metadata_form.text_field :background_color, label: t('custom_pages.components.background_color'), help: '#ffffff'
-    .col-6
-      = metadata_form.number_field :height, label: t('custom_pages.components.height.label'), help: t('custom_pages.components.height.help')
-  = metadata_form.check_box :full_width, label: t('custom_pages.components.full_width'), custom: :switch
+    .row
+      .col-6
+        = metadata_form.text_field :background_color, label: t('custom_pages.components.background_color'), help: '#ffffff'
+      .col-6
+        = metadata_form.number_field :height, label: t('custom_pages.components.height.label'), help: t('custom_pages.components.height.help')
+    = metadata_form.check_box :full_width, label: t('custom_pages.components.full_width'), custom: :switch

@@ -1,26 +1,8 @@
-.py-5{ class: @component.full_width? ? 'container-fluid' : 'container' }
+%section{ class: @component.full_width? ? "container-fluid" : "container", style: "background:#{background_color}" }
   - if @component.metadata.section_title.present?
-    %h2{ class: title_classes }
-      = @component.section_title
-  .row.align-content-center.d-flex{ id: "row-#{@component.id}" }
-    - @component.children.active.each do |component|
-      .col-12.col-md.align-items-center.d-flex.flex-wrap
-        - begin
-          = render component.view_component
-        - rescue ActionView::Template::Error => e
-          - Rails.logger.error(e)
-          .container
-            %h4= t('custom_pages.messages.something_went_wrong')
-            = link_to t('custom_pages.actions.edit_component'),
-                main_app.edit_admin_custom_page_component_component_path(@component.page,
-                                                                        @component, component)
-- if @component.metadata.background_color.present?
-  :css
-    #section-#{@component.id} {
-      background-color: #{@component.metadata.background_color};
-    }
+    %h2{ class: title_classes }= @component.metadata.section_title
 
-:css
-  #row-#{@component.id} {
-    height: #{height};
-  }
+  .d-flex.align-content-center{ style: "height:#{height}px" }
+    - @component.children.active.each do |component|
+      .d-flex.align-items-center.flex-wrap
+        = render "mcm/child_component", component: component

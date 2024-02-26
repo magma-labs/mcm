@@ -14,11 +14,11 @@ module Mcm
     end
 
     def background_image
-      @component.assets.first.attachment
+      @component.assets.first&.attachment
     end
 
     def cta_image
-      @component.assets.second.attachment
+      @component.assets.second&.attachment
     end
   end
 end

@@ -5,7 +5,7 @@ module Mcm
     end
 
     def youtube_url
-      "https://www.youtube.com/embed/#{@component.youtube_video_id}"
+      "https://www.youtube.com/embed/#{@component.metadata.youtube_video_id}"
     end
   end
 end

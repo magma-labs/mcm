@@ -1,3 +1,4 @@
-- @component.assets.first_or_initialize
-- @component_form.fields_for :assets do |assets_form|
-  = render Mcm::ImageComponent.new(form: assets_form, variant: :desktop, styles: image_preview_styles)
+- render "mcm/component_form", component: @component do |component_form|
+  - @component.assets.first_or_initialize
+  - component_form.fields_for :assets do |assets_form|
+    = render Mcm::ImageComponent.new(form: assets_form, variant: :desktop, styles: image_preview_styles)

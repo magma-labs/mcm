@@ -33,22 +33,7 @@ module Mcm
     before_destroy :update_related_positions
 
     def view_component(component_form: nil)
-      "::Mcm::#{component_name.camelize}Component".constantize.new(
-        component: self,
-        component_form: component_form
-      )
-    end
-
-    def respond_to_missing?(method, *args)
-      metadata.respond_to?(method) || super(method, args)
-    end
-
-    def method_missing(method, *args)
-      if respond_to_missing?(method)
-        metadata.send(method, *args)
-      else
-        super
-      end
+      "::Mcm::#{component_name.camelize}Component".constantize.new(component: self)
     end
 
     # rubocop:disable Rails/SkipsModelValidations

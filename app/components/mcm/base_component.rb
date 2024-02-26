@@ -4,9 +4,8 @@ module Mcm
       "content"
     end
 
-    def initialize(component:, component_form: nil)
+    def initialize(component:)
       @component = component
-      @component_form = component_form
     end
 
     def defaults
@@ -16,6 +15,14 @@ module Mcm
     def image_preview_styles
       # Matches the :small attachment variant in Asset
       "max-width:400px;max-height:400px;"
+    end
+
+    def height
+      @component.metadata.height.to_i.positive? ? "#{@component.metadata.height}px" : 'auto'
+    end
+
+    def background_color
+      @component.metadata.background_color
     end
 
     def title_classes

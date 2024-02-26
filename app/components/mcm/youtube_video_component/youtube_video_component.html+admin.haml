@@ -1,3 +1,4 @@
-- @component_form.fields_for :metadata, @component.metadata do |metadata_form|
-  = metadata_form.number_field :height, required: true
-  = metadata_form.text_field :youtube_video_id, placeholder: 'vlDzyIIMYma', help: 'Youtube video id', required: true
+- render "mcm/component_form", component: @component do |component_form|
+  - component_form.fields_for :metadata, @component.metadata do |metadata_form|
+    = metadata_form.number_field :height, required: true
+    = metadata_form.text_field :youtube_video_id, placeholder: 'vlDzyIIMYma', help: 'Youtube video id', required: true

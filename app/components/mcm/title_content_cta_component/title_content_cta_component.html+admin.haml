@@ -1,25 +1,26 @@
-- @component_form.fields_for :metadata, @component.metadata do |metadata_form|
-  = metadata_form.text_field :title, required: true
-  .row
-    .col-6
-      = metadata_form.select :title_alignment, text_alignments, required: true
-    .col-6
-      = metadata_form.select :title_color, available_text_colors, required: true
+- render "mcm/component_form", component: @component do |component_form|
+  - component_form.fields_for :metadata, @component.metadata do |metadata_form|
+    = metadata_form.text_field :title, required: true
+    .row
+      .col-6
+        = metadata_form.select :title_alignment, text_alignments, required: true
+      .col-6
+        = metadata_form.select :title_color, available_text_colors, required: true
 
-  = metadata_form.hidden_field :content, required: true
-  %trix-editor{ input: 'components_page_metadata_content' }
+    = metadata_form.hidden_field :content, required: true
+    %trix-editor{ input: 'components_page_metadata_content' }
 
-  .row.mt-3
-    .col-6
-      = metadata_form.select :content_alignment, text_alignments, required: true
-    .col-6
-      = metadata_form.select :content_color, available_text_colors, required: true
-  .row
-    .col-6
-      = metadata_form.text_field :cta_title, label: t('.cta.title')
-      = metadata_form.text_field :cta_url, label: t('.cta.url')
-      = metadata_form.select :button_color, available_button_colors, label: t('.cta.button')
-      = metadata_form.select :button_alignment, text_alignments, required: true
-    .col-6
-      = metadata_form.select :content_vertical_alignment, vertical_alignment_options, required: true, label: t('.position.vertical')
-      = metadata_form.select :content_horizontal_alignment, horizontal_alignment_options, required: true, label: t('.position.horizontal')
+    .row.mt-3
+      .col-6
+        = metadata_form.select :content_alignment, text_alignments, required: true
+      .col-6
+        = metadata_form.select :content_color, available_text_colors, required: true
+    .row
+      .col-6
+        = metadata_form.text_field :cta_title, label: t('.cta.title')
+        = metadata_form.text_field :cta_url, label: t('.cta.url')
+        = metadata_form.select :button_color, available_button_colors, label: t('.cta.button')
+        = metadata_form.select :button_alignment, text_alignments, required: true
+      .col-6
+        = metadata_form.select :content_vertical_alignment, vertical_alignment_options, required: true, label: t('.position.vertical')
+        = metadata_form.select :content_horizontal_alignment, horizontal_alignment_options, required: true, label: t('.position.horizontal')
