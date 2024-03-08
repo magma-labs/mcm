@@ -1,0 +1,24 @@
+- render "mcm/component_form", component: @component do |component_form|
+  - @component.assets.first_or_initialize
+  - component_form.fields_for :assets do |assets_form|
+    = render Mcm::ImageComponent.new(form: assets_form, styles: image_preview_styles, variant: :small)
+
+  - component_form.fields_for :metadata, @component.metadata do |metadata_form|
+    = metadata_form.text_field :title, required: true, help: 'Always centered'
+    = metadata_form.select :title_color, available_text_colors, required: true
+    = metadata_form.text_area :content, required: true
+    .row
+      .col-6
+        = metadata_form.select :content_color, available_text_colors, required: true
+      .col-6
+        = metadata_form.select :content_alignment, text_alignments, required: true
+    .row
+      .col-6
+        = metadata_form.text_field :cta, label: "Call to Action"
+      .col-6
+        = metadata_form.text_field :cta_url, label: "Call to Action URL"
+    .row
+      .col-6
+        = metadata_form.select :button_color, available_button_colors
+      .col-6
+        = metadata_form.select :button_alignment, text_alignments, required: true

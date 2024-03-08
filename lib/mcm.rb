@@ -1,3 +1,4 @@
+require "view_component"
 require "haml-rails"
 require "bootstrap_form"
 require "mcm/version"

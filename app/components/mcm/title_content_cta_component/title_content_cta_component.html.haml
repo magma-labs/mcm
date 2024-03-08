@@ -1,0 +1,9 @@
+.row.p-1.p-md-2.p-lg-3.h-100
+  .col-12.d-flex{ class: component_classes }
+    %div
+      %h2{ class: title_classes }= @component.metadata.title
+      %div{ class: content_classes }
+        != @component.metadata.content
+      - if @component.metadata.cta_title.present?
+        %div{ class: @component.metadata.button_alignment }
+          = link_to @component.metadata.cta_title, @component.metadata.cta_url, class: "btn #{@component.metadata.button_color}"

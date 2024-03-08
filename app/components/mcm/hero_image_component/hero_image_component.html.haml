@@ -1,0 +1,4 @@
+.p-0.w-100{ class: "image_hero_#{@component.assets.first.id}" }
+= render Mcm::ImageComponent.new(asset: @component.assets.first,
+                                 class_name: "image_hero_#{@component.assets.first.id}",
+                                 height: @component.parent.metadata.height)

@@ -22,8 +22,12 @@ Gem::Specification.new do |spec|
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
-  spec.add_dependency "rails", ">= 6.0.0"
+  rails_version = ENV["RAILS_VERSION"] || "6.0.0"
+
+  spec.add_dependency "rails", ">= #{rails_version}"
+  spec.add_dependency "activestorage", ">= #{rails_version}"
   spec.add_dependency "haml-rails"
+  spec.add_dependency "image_processing", "~> 1.2"
   spec.add_dependency "bootstrap_form", "~> 4.0"
-  spec.add_dependency "image_processing"
+  spec.add_dependency "view_component", ">= 2.7.0"
 end

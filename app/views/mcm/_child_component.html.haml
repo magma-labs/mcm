@@ -1,0 +1,7 @@
+- begin
+  = render component.view_component
+- rescue ViewComponent::TemplateError => e
+  - Rails.logger.error(e)
+  .alert.alert-danger
+    %p= t('custom_pages.messages.something_went_wrong')
+    = link_to t('custom_pages.actions.edit_component'), main_app.edit_admin_component_path(component)

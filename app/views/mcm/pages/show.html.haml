@@ -4,8 +4,7 @@
 - @page.components_pages.active.includes(:component, :children).top_level.each do |component|
   %section{ id: "section-#{component.id}" }
     - begin
-      = render partial: "mcm/pages/templates/#{component.presenter.frontend_template}",
-          locals: { components_page: component }
+      = render component.view_component
     - rescue ActionView::Template::Error => e
       - Rails.logger.error(e)
       .container

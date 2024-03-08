@@ -19,7 +19,7 @@ module Mcm
 
     validates :name, presence: true
     delegate :name, to: :component, prefix: true
-    delegate :backend_template, :frontend_template, :full_width?, :multiple_images?, to: :presenter
+    delegate :full_width?, to: :view_component
 
     serialize :metadata, coder: Mcm::JsonSerializer
 
@@ -32,20 +32,8 @@ module Mcm
     before_create :calculate_position
     before_destroy :update_related_positions
 
-    def presenter
-      @presenter ||= "::Mcm::#{component_name.camelize}Presenter".constantize.new(self)
-    end
-
-    def respond_to_missing?(method, *args)
-      metadata.respond_to?(method) || super(method, args)
-    end
-
-    def method_missing(method, *args)
-      if respond_to_missing?(method)
-        metadata.send(method, *args)
-      else
-        super
-      end
+    def view_component(component_form: nil)
+      "::Mcm::#{component_name.camelize}Component".constantize.new(component: self)
     end
 
     # rubocop:disable Rails/SkipsModelValidations
@@ -114,7 +102,7 @@ module Mcm
     private
 
     def fill_defaults
-      self.metadata ||= presenter.defaults
+      self.metadata ||= view_component.defaults
     end
 
     def calculate_position

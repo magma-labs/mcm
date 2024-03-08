@@ -1,0 +1,5 @@
+- render "mcm/component_form", component: @component do |component_form|
+  - component_form.fields_for :metadata, @component.metadata do |metadata_form|
+    %trix-editor{ input: 'components_page_metadata_body' }
+    = metadata_form.hidden_field :body
+    = metadata_form.select :content_color, available_text_colors, required: true

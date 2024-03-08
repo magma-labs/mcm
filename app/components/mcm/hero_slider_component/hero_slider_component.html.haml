@@ -1,0 +1,17 @@
+%div{ class: @component.full_width? ? 'container-fluid p-0' : 'container' }
+  .carousel.slide.w-100{ data: { ride: 'carousel' }, id: "hero-slide-#{@component.id}", style: "height: #{height}px;" }
+    .carousel-inner
+      - @component.children.active.each_with_index do |slide, index|
+        .carousel-item{ class: index.zero? ? 'active' : '' }= render "mcm/child_component", component: slide
+
+    - if @component.children.active.size > 1
+      %ol.carousel-indicators
+        - @component.children.active.each_with_index do |_slide, index|
+          %li{ class: index.zero? ? 'active' : '', data: { target: "#hero-slide-#{@component.id}", 'slide-to': index } }
+
+      = link_to "#hero-slide-#{@component.id}", role: 'buton', data: { slide: 'prev' }, class: 'carousel-control-prev' do
+        %span.carousel-control-prev-icon{ aria: { hidden: true } }
+        %span.sr-only= t('views.pagination.previous')
+      = link_to "#hero-slide-#{@component.id}", role: 'buton', data: { slide: 'next' }, class: 'carousel-control-next' do
+        %span.carousel-control-next-icon{ aria: { hidden: true } }
+        %span.sr-only= t('views.pagination.next')

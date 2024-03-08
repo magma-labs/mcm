@@ -1,0 +1,17 @@
+= @form.hidden_field :id
+= @form.file_field :attachment, label: @label, onchange: "showPreview(this, #{@form.index})"
+%img{src: image_src, id: "preview-#{@form.index}", style: @styles}
+
+:javascript
+  if (typeof showPreview == 'undefined') {
+    function showPreview(input, index) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          const img = document.getElementById("preview-" + index)
+          img.src = e.target.result
+        }
+        reader.readAsDataURL(input.files[0])
+      }
+    }
+  }

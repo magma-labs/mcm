@@ -1,0 +1,8 @@
+%section{ class: @component.full_width? ? "container-fluid" : "container", style: "background:#{background_color}" }
+  - if @component.metadata.section_title.present?
+    %h2{ class: title_classes }= @component.metadata.section_title
+
+  .d-flex.align-content-center{ style: "height:#{height}px" }
+    - @component.children.active.each do |component|
+      .d-flex.align-items-center.flex-wrap
+        = render "mcm/child_component", component: component
