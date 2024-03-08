@@ -12,7 +12,7 @@ module Mcm
     protected
 
     def image_src
-      return unless @asset.persisted?
+      return unless @asset && @asset.attachment.attached?
 
       @asset.attachment.variant(@variant).processed.url
     end

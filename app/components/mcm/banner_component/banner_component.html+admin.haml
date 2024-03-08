@@ -1,31 +1,30 @@
-- render "mcm/component_form", component: @component do |component_form|
-  - component_form.fields_for :metadata, @component.metadata do |metadata_form|
-    .row
-      .col-6= metadata_form.text_field :title, required: true
-      .col-6= metadata_form.select :title_color, available_text_colors, required: true
+- @component_form.fields_for :metadata, @component.metadata do |metadata_form|
+  .row
+    .col-6= metadata_form.text_field :title, required: true
+    .col-6= metadata_form.select :title_color, available_text_colors, required: true
 
-    = metadata_form.label :content
-    = metadata_form.hidden_field :content, required: true
-    %trix-editor{ input: 'components_page_metadata_content' }
+  = metadata_form.label :content
+  = metadata_form.hidden_field :content, required: true
+  %trix-editor{ input: 'components_page_metadata_content' }
 
-    .row.mt-3
-      .col-6
-        = metadata_form.select :content_color, available_text_colors
-      .col-6
-        = metadata_form.select :content_alignment, text_alignments, required: true
-    .row
-      .col-6
-        = metadata_form.text_field :cta, required: true, label: 'CTA'
-      .col-6
-        = metadata_form.text_field :cta_url, required: true, label: 'URL'
-    .row
-      .col-6
-        = metadata_form.select :button_color, available_button_colors
+  .row.mt-3
+    .col-6
+      = metadata_form.select :content_color, available_text_colors
+    .col-6
+      = metadata_form.select :content_alignment, text_alignments, required: true
+  .row
+    .col-6
+      = metadata_form.text_field :cta, required: true, label: 'CTA'
+    .col-6
+      = metadata_form.text_field :cta_url, required: true, label: 'URL'
+  .row
+    .col-6
+      = metadata_form.select :button_color, available_button_colors
 
-  - 2.times { @component.assets.build } if @component.assets.empty?
-  - component_form.fields_for :assets do |assets_form|
-    = assets_form.hidden_field :position, value: assets_form.index + 1
-    = render Mcm::ImageComponent.new(form: assets_form,
-                                     styles: image_preview_styles(variant_for(assets_form.index)),
-                                     variant: variant_for(assets_form.index),
-                                     label: t("custom_pages.components.banner.image_#{assets_form.index + 1}"))
+- 2.times { @component.assets.build } if @component.assets.empty?
+- @component_form.fields_for :assets do |assets_form|
+  = assets_form.hidden_field :position, value: assets_form.index + 1
+  = render Mcm::ImageComponent.new(form: assets_form,
+                                    styles: image_preview_styles(variant_for(assets_form.index)),
+                                    variant: variant_for(assets_form.index),
+                                    label: t("custom_pages.components.banner.image_#{assets_form.index + 1}"))

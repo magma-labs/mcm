@@ -1,4 +1,3 @@
-- render "mcm/component_form", component: @component do |component_form|
-  - component_form.fields_for :metadata, @component.metadata do |metadata_form|
-    = metadata_form.number_field :height, required: true
-    = metadata_form.check_box :full_width, label: t('custom_pages.components.full_width'), custom: :switch
+- @component_form.fields_for :metadata, @component.metadata do |metadata_form|
+  = metadata_form.number_field :height, required: true
+  = metadata_form.check_box :full_width, label: t('custom_pages.components.full_width'), custom: :switch

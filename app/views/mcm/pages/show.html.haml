@@ -9,8 +9,7 @@
       - Rails.logger.error(e)
       .container
         %h4= t('custom_pages.messages.something_went_wrong')
-        = link_to(t('custom_pages.actions.edit_component'),
-            main_app.edit_admin_component_path(component))
+        = link_to(t('custom_pages.actions.edit_component'), main_app.edit_admin_component_path(component))
 
 - if @page.metadata.background_color.present?
   :css

@@ -1,5 +1,0 @@
-= bootstrap_form_for component, url: main_app.admin_component_path(component), method: :put do |component_form|
-  = component_form.text_field :name, required: true
-  = component_form.check_box :active, label: t('custom_pages.components.status'), custom: :switch
-
-  = yield component_form

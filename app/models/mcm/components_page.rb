@@ -33,7 +33,7 @@ module Mcm
     before_destroy :update_related_positions
 
     def view_component(component_form: nil)
-      "::Mcm::#{component_name.camelize}Component".constantize.new(component: self)
+      "::Mcm::#{component_name.camelize}Component".constantize.new(component: self, component_form:)
     end
 
     # rubocop:disable Rails/SkipsModelValidations

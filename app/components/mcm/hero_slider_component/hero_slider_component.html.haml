@@ -1,5 +1,5 @@
 %div{ class: @component.full_width? ? 'container-fluid p-0' : 'container' }
-  .carousel.slide.w-100{ data: { ride: 'carousel' }, id: "hero-slide-#{@component.id}", style: "height: #{height}px;" }
+  .carousel.slide.w-100{ data: { ride: 'carousel' }, id: "hero-slide-#{@component.id}", style: "height: #{height};" }
     .carousel-inner
       - @component.children.active.each_with_index do |slide, index|
         .carousel-item{ class: index.zero? ? 'active' : '' }= render "mcm/child_component", component: slide

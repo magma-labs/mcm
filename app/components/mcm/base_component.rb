@@ -4,8 +4,9 @@ module Mcm
       "content"
     end
 
-    def initialize(component:)
+    def initialize(component:, component_form: )
       @component = component
+      @component_form = component_form
     end
 
     def defaults

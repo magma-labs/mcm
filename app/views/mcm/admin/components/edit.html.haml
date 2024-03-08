@@ -13,10 +13,9 @@
 - if @component.draft?
   .alert.alert-warning= t('custom_pages.messages.draft')
 
-= bootstrap_form_for @component, as: :components_page,
-    url: main_app.admin_component_path(@component), method: :put do |f|
-  = f.text_field :name, required: true
+= bootstrap_form_for @component, as: :components_page, url: main_app.admin_component_path(@component), method: :put do |f|
   .form-group
+    = f.text_field :name, required: true
     = f.check_box :active, label: t('custom_pages.components.status'), custom: :switch
 
   = render @component.view_component(component_form: f)
